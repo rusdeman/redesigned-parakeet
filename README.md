@@ -7,56 +7,33 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Технические требования 
+1. PHP 7.4 
+2. Фреймворк:  Symfony 5/Laravel 8. 
+3. БД:  MySQL. 
+4. Упаковать в docker контейнер. Желательно чтобы после выполнения команд docker-compose build и docker-compose up проект был полностью готов к работе. 
+5. Выложить в открытый репозиторий на http://GitHub.com. 
+## Общее описание задания 
+Необходимо создать RESTfull API для управления лентой новостей. 
+При создании формата запросов и ответов используйте все best practices по построению CRUD API на основе RESTfull архитектуры. 
+### API должно содержать следующие методы: 
+1. Добавление новости. 
+2. Редактирование новости. 
+3. Удаление новости. 
+4. Получение новости по идентификатору. 
+5. Поиск новостей. Параметры поиска: <br>
+○ Список идентификаторов новостей. <br>
+○ Период дат с точностью до дня. <br>
+○ Сортировка по полям: заголовок и дата.<br> 
+○ Передача параметров пагинации: смещение и лимит.<br> 
+6. Получение количества новостей за каждый день в пределах указанного периода. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### Внимание! 
+Дополнительно нужно реализовать возможность добавления новостей путем передачи их через очередь RabbitMQ. <br> 
+Формат сообщения в очереди должен повторять формат сообщения, которое передается через HTTP API. 
+### Необходимые поля новости 
+1. Уникальный идентификатор. Назначает API. 
+2. Заголовок. Длина не больше 255 символов. 
+3. Текст. Как-то обрабатывать необязательно. 
+4. Автор, в виде текстовой строки. 
+5. Дата и время публикации новости. Любой удобный формат.
